@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -22,5 +23,10 @@ export default function DashboardPage() {
       .then((data) => router.push(`/dashboard/${data.role}`));
   }, [router]);
 
-  return <p className="p-4">Loading your dashboard...</p>;
+  return (
+    <div className="p-6">
+      <h1 className="text-2xl font-bold">Dashboard</h1>
+      <ThemeSwitcher />
+    </div>
+  );
 }

@@ -1,7 +1,23 @@
+
+export type User = {
+  name: string;
+  email: string;
+  password: string;
+  image?: string;
+  role: "user" | "admin" | "superadmin";
+  otp?: string;
+  newPassword?: string;
+};
+
+// export const users = new Map<string, User>();
+// export const sessions = new Map<string, { email: string }>();
+
+
 // Simulated memory database
+
 export const users = new Map<
   string,
-  { password: string; role: string; otp?: string; loginCount: number }
+  { password: string; role: string; otp?: string; loginCount: number; newPassword?:string}
 >();
 
 // Active session tokens (serial → { email, expiresAt })
@@ -11,8 +27,8 @@ export const sessions = new Map<
 >();
 
 // Seed test user
-users.set('admin@wkt3.com', { password: 'Admin@123', role: 'superadmin',
-  loginCount: 0 });
+users.set('admin@wkt3.com', {password: 'Admin@123', role: 'superadmin',
+  loginCount: 1 });
 
 // Helper: create a token
 export function createToken(email: string) {

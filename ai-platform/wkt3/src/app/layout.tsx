@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./globals.css";
 import "/styles/themes.css";
-
+import "/styles/globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { TranslationProvider } from "@/components/TranslationProvider";
 
 export const metadata: Metadata = {
   title: "WKT3 - Global Trading & Gaming",
@@ -20,7 +22,11 @@ export default function RootLayout({
         <header className="p-4 bg-[var(--primary-color)] text-white text-xl font-bold">
           Wkt3 Global Platform
         </header>
-        <main className="min-h-screen p-4">{children}</main>
+        <main className="min-h-screen p-4">
+          <ThemeProvider>
+            <TranslationProvider>{children}</TranslationProvider>
+          </ThemeProvider>
+        </main>
         <footer className="p-4 text-center text-sm opacity-70">
           &copy; {new Date().getFullYear()} Wkt3.com
         </footer>
